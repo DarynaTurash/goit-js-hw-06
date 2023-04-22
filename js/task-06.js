@@ -1,19 +1,20 @@
 const inputRef = document.querySelector("#validation-input");
-const maxLengthOfSymbols = inputRef.dataset.length;
+const correctLengthOfSymbols = Number(inputRef.dataset.length);
+
 
 inputRef.addEventListener('blur', onValidationOfSymbolLength);
 
 function onValidationOfSymbolLength(event) {
     const symbolsEnteredLength = event.target.value.trim().length;
 
-    if (symbolsEnteredLength <= maxLengthOfSymbols) {
-        inputRef.classList.add('valid');
-        inputRef.classList.remove('invalid');
-    } else {
-        inputRef.classList.remove('valid');
+    if (symbolsEnteredLength !== correctLengthOfSymbols) {
         inputRef.classList.add('invalid');
+        inputRef.classList.remove('valid');
+    } else {
+        inputRef.classList.remove('invalid');
+        inputRef.classList.add('valid');
     };
-}
+};
 
 
 
